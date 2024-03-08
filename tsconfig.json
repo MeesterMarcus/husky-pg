@@ -8,7 +8,7 @@
       "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file.
       "outDir": "./dist"              // Redirect output structure to the directory
     },
-    "include": ["src/**/*"],           // Specify files to be included in program
+    "include": ["./**/*"],           // Specify files to be included in program
     "exclude": ["node_modules"]        // Exclude node_modules directory from program
   }
   
