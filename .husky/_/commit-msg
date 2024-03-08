@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# Read the commit message from the file provided as the first argument
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat $COMMIT_MSG_FILE)
+
+# Regular expression to match the Conventional Commits format
+CONVENTIONAL_COMMIT_REGEX="^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(\S+\))?: .{1,50}"
+
+# Regular expression to match the "meg-issues#0000" pattern
+ISSUE_PATTERN="meg-issues#[0-9]+"
+
+# Check if the commit message matches the Conventional Commits format
+if [[ ! $COMMIT_MSG =~ $CONVENTIONAL_COMMIT_REGEX ]]; then
+    echo "ERROR: Commit message does not follow Conventional Commits format (type(scope?): subject)"
+    exit 1 # Exit with 1 to indicate failure
+fi
+
+# Check if the commit message contains the "meg-issues#0000" pattern
+if [[ ! $COMMIT_MSG =~ $ISSUE_PATTERN ]]; then
+    echo "ERROR: Commit message must include an issue identifier (meg-issues#0000)."
+    exit 1 # Exit with 1 to indicate failure
+fi
+
+exit 0 # Exit with 0 to indicate success if both checks pass
