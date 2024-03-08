@@ -23,4 +23,6 @@ if [[ ! $COMMIT_MSG =~ $ISSUE_PATTERN ]]; then
     exit 1 # Exit with 1 to indicate failure
 fi
 
+echo "\nCommit message is correct! ✅"
+
 exit 0 # Exit with 0 to indicate success if both checks pass
