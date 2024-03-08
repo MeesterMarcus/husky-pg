@@ -1,5 +1,5 @@
 #!/bin/sh
-echo "\n\n\033[33mChecking commit message... 🔍\033[0m"
+printf "\n\033[33mChecking commit message... 🔍\033[0m\n"
 
 # Read the commit message from the file provided as the first argument
 COMMIT_MSG_FILE=$1
@@ -13,16 +13,17 @@ ISSUE_PATTERN="meg-issues#[0-9]+"
 
 # Check if the commit message matches the Conventional Commits format
 if [[ ! $COMMIT_MSG =~ $CONVENTIONAL_COMMIT_REGEX ]]; then
-    echo "\033[31mERROR: Commit message does not follow Conventional Commits format (type(scope?): subject)\033[0m"
+    echo "\033[31mERROR: Commit message does not follow Conventional Commits format (type(scope?): subject)\n\n\033[0m"
     exit 1 # Exit with 1 to indicate failure
 fi
 
 # Check if the commit message contains the "meg-issues#0000" pattern
 if [[ ! $COMMIT_MSG =~ $ISSUE_PATTERN ]]; then
-    echo "\033[31mERROR: Commit message does not follow Conventional Commits format (type(scope?): subject)\033[0m"
+    echo "\033[31mERROR: Commit message does not follow Conventional Commits format (type(scope?): subject)\n\n\033[0m"
     exit 1 # Exit with 1 to indicate failure
 fi
 
-echo "\nCommit message is correct! ✅"
+echo "Commit message is correct! ✅\n\n"
+
 
 exit 0 # Exit with 0 to indicate success if both checks pass

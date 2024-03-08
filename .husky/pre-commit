@@ -1,11 +1,13 @@
 #!/bin/sh
 # Print "Running tests..." in yellow
-echo "\033[33mRunning tests... 🔨\033[0m"
+echo "\033[33m\nRunning tests... 🔨\033[0m"
 
 # Run your test command
 if npm test; then
   echo "\n\nTests passed ✅"
+  echo "\n\n----------------------------------------------------------------"
 else
   echo "\n\nTests failed ❌"
+  echo "\n\n----------------------------------------------------------------"
   exit 1
 fi
